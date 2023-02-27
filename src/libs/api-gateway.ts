@@ -7,7 +7,7 @@ export type ValidatedEventAPIGatewayProxyEvent<S> = Handler<ValidatedAPIGatewayP
 export const formatJSONResponse = (response: Record<string, unknown>) => {
 	return {
 		headers: { ...defaultHeaders },
-		statusCode: 200,
+		statusCode: response.statusCode,
 		body: JSON.stringify(response)
 	}
 }
