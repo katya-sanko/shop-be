@@ -1,0 +1,96 @@
+{
+	"products": [
+		{
+			"PutRequest": {
+				"Item": {
+					"id": {
+						"N": "1"
+					},
+					"title": {
+						"S": "ProductOne"
+					},
+					"description": {
+						"S": "Short Product Description1"
+					},
+					"price": {
+						"N": "5"
+					}
+				}
+			}
+		},
+		{
+			"PutRequest": {
+				"Item": {
+					"id": {
+						"N": "2"
+					},
+					"title": {
+						"S": "ProductTwo"
+					},
+					"description": {
+						"S": "Short Product Description1"
+					},
+					"price": {
+						"N": "20"
+					}
+				}
+			}
+		},
+		{
+			"PutRequest": {
+				"Item": {
+					"id": {
+						"N": "3"
+					},
+					"title": {
+						"S": "ProductThree"
+					},
+					"description": {
+						"S": "Short Product Description1"
+					},
+					"price": {
+						"N": "1"
+					}
+				}
+			}
+		}
+	],
+	"stocks": [
+		{
+			"PutRequest": {
+				"Item": {
+					"product_id": {
+						"N": "1"
+					},
+					"count": {
+						"N": "12"
+					}
+				}
+			}
+		},
+		{
+			"PutRequest": {
+				"Item": {
+					"product_id": {
+						"N": "2"
+					},
+					"count": {
+						"N": "3"
+					}
+				}
+			}
+		},
+		{
+			"PutRequest": {
+				"Item": {
+					"product_id": {
+						"N": "3"
+					},
+					"count": {
+						"N": "7"
+					}
+				}
+			}
+		}
+	]
+}
