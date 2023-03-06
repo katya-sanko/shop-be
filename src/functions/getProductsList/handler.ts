@@ -24,7 +24,7 @@ const getProductsList: ValidatedEventAPIGatewayProxyEvent<any> = async (event) =
 			return {
 				id: product.id,
 				count: stock.count || 0,
-				price: 200,
+				price: product.price,
 				title: product.title,
 				description: product.description
 			}
@@ -34,7 +34,7 @@ const getProductsList: ValidatedEventAPIGatewayProxyEvent<any> = async (event) =
 
 	} catch (error) {
 		console.log(error);
-		return formatJSONResponse({ message: error?.message, statusCode: 200 });
+		return formatJSONResponse({ message: error?.message, statusCode:400 });
 	}
 };
 

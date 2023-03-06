@@ -32,7 +32,7 @@ const getProductsById: ValidatedEventAPIGatewayProxyEvent<any> = async (event) =
 
 	} catch (error) {
 		console.log(error);
-		return formatJSONResponse({ message: error?.message, statusCode: 500 });
+		return formatJSONResponse({ message: error?.message, statusCode: 400 });
 	}
 };
 
