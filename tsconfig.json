@@ -14,7 +14,8 @@
 		"resolveJsonModule": true
 	},
 	"include": [
-		"src/**/*.ts",
+		"import-service/**/*.ts",
+		"product-service/**/*.ts",
 		"serverless.ts"
 	],
 	"exclude": [
