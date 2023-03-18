@@ -2,6 +2,6 @@
 	"headers": {
 		"Content-Type": "application/json"
 	},
-	"pathParameters": "{\"name\": \"smth\"}",
+	"queryStringParameters": "{\"name\": \"smth\"}",
 	"body": "{\"test\": \"importProductsFile\"}"
 }
