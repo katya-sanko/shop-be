@@ -6,7 +6,7 @@ export default {
 		{
 			httpApi: {
 				method: 'get',
-				path: '/import',
+				path: '/${self:provider.stage}/import',
 			},
 		},
 	],
