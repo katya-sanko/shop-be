@@ -1,8 +1,10 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
 import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb';
 import { unmarshall } from '@aws-sdk/util-dynamodb';
+
+import type { ValidatedEventAPIGatewayProxyEvent } from './../../../libs/api-gateway';
+import { formatJSONResponse } from './../../../libs/api-gateway';
+import { middyfy } from './../../../libs/lambda';
+
 
 const prettify = (data:any) => data.Items?.map((item) => unmarshall(item));
 
