@@ -1,0 +1,7 @@
+{
+	"headers": {
+		"Content-Type": "application/json"
+	},
+	"body": "{\"Records\": [{\"id\": 5, \"title\": \"Test product\", \"price\": 200}]}",
+	"Records": "[{\"id\": 5, \"title\": \"Test product\", \"price\": 200}]"
+}

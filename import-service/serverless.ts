@@ -22,7 +22,9 @@ const serverlessConfiguration: AWS = {
 		environment: {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
 			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-			CSV_BUCKET_NAME: process.env.CSV_BUCKET_NAME
+			CSV_BUCKET_NAME: process.env.CSV_BUCKET_NAME,
+			SQS_URL: process.env.SQS_URL,
+			SQS_ARN: process.env.SQS_ARN
 		},
 		iamRoleStatements: [
 			{
@@ -34,6 +36,11 @@ const serverlessConfiguration: AWS = {
 				Effect: 'Allow',
 				Action: 's3:*',
 				Resource: 'arn:aws:s3:::${self:provider.environment.CSV_BUCKET_NAME}/*',
+			},
+			{
+				Effect: 'Allow',
+				Action: 'sqs:*',
+				Resource: process.env.SQS_ARN,
 			},
 		],
 		httpApi: {
