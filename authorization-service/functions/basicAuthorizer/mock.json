@@ -1,0 +1,8 @@
+{
+	"headers": {
+		"Content-Type": "application/json",
+		"Authorization": "Basic S0FUWUFfU0FOS086VEVTVF9QQVNTV09SRA=="
+	},
+	"queryStringParameters": "{\"name\": \"smth\"}",
+	"body": "{\"test\": \"basicAuthorizer\"}"
+}
