@@ -2,25 +2,27 @@ import type { ValidatedEventAPIGatewayProxyEvent } from './../../../libs/api-gat
 import { formatJSONResponse } from './../../../libs/api-gateway';
 import { middyfy } from './../../../libs/lambda';
 
-// import schema from './schema';
 import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
 import { marshall } from '@aws-sdk/util-dynamodb';
 
 
-const DEFAULT_COUNT = 0;
+const DEFAULT_COUNT_PRICE = 0;
 const DEFAULT_DESCRIPTION = 'Unknown item';
+const DEFAULT_Title = 'Sad item';
 
 const createProduct: ValidatedEventAPIGatewayProxyEvent<any> = async (event) => {
 	try {
+		const id = event.body.id || new Date().getUTCMilliseconds();
+
 		const newProduct = {
-			id: event.body.id,
-			price: event.body.price,
-			title: event.body.title,
+			id: id,
+			price: event.body.price || DEFAULT_COUNT_PRICE,
+			title: event.body.title || DEFAULT_Title,
 			description: event.body.description || DEFAULT_DESCRIPTION
 		};
 		const newStock = {
-			product_id: event.body.id,
-			count: event.body.count || DEFAULT_COUNT
+			product_id: id,
+			count: event.body.count || DEFAULT_COUNT_PRICE
 		};
 
 		const dbClient = new DynamoDBClient({ region: 'eu-west-1' });

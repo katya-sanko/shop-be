@@ -31,7 +31,7 @@ const catalogBatchProcess = async (event) => {
   
 	  parsedProducts.forEach(async (product) => {
 
-		const id =  new Date().getUTCMilliseconds(); //v4();
+		const id = new Date().getUTCMilliseconds(); //v4();
 
 		const newProduct = {
 			id: id,
