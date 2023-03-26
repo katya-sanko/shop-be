@@ -24,7 +24,9 @@ const serverlessConfiguration: AWS = {
 			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
 			CSV_BUCKET_NAME: process.env.CSV_BUCKET_NAME,
 			SQS_URL: process.env.SQS_URL,
-			SQS_ARN: process.env.SQS_ARN
+			SQS_ARN: process.env.SQS_ARN,
+			BASIC_AUTHORIZER_ARN: process.env.BASIC_AUTHORIZER_ARN,
+			REST_API_ID: process.env.REST_API_ID,
 		},
 		iamRoleStatements: [
 			{
@@ -43,12 +45,35 @@ const serverlessConfiguration: AWS = {
 				Resource: process.env.SQS_ARN,
 			},
 		],
-		httpApi: {
-			cors: true,
-		},
 	},
 	// import the function via paths
 	functions: { importProductsFile, importFileParser },
+	resources: {
+		Resources: {
+			AccessDeniedGwResponse: {
+				Type: 'AWS::ApiGateway::GatewayResponse',
+				Properties: {
+					ResponseParameters: {
+						'gatewayresponse.header.Access-Control-Allow-Origin': '\'*\'',
+						'gatewayresponse.header.Access-Control-Allow-Headers': '\'*\'',
+					},
+					ResponseType: 'ACCESS_DENIED',
+					RestApiId: process.env.REST_API_ID,
+				},
+			},
+			UnauthorizedGwResponse: {
+				Type: 'AWS::ApiGateway::GatewayResponse',
+				Properties: {
+					ResponseParameters: {
+						'gatewayresponse.header.Access-Control-Allow-Origin': '\'*\'',
+						'gatewayresponse.header.Access-Control-Allow-Headers': '\'*\'',
+					},
+					ResponseType: 'UNAUTHORIZED',
+					RestApiId: process.env.REST_API_ID,
+				},
+			},
+		},
+	},
 	package: { individually: true },
 	custom: {
 		esbuild: {

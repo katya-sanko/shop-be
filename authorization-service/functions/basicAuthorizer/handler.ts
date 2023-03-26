@@ -1,4 +1,3 @@
-import { middyfy } from '../../../libs/lambda';
 import { APIGatewayRequestAuthorizerEvent } from 'aws-lambda';
 
 const basicAuthorizer = async (event: APIGatewayRequestAuthorizerEvent) => {
@@ -48,4 +47,4 @@ const generatePolicy = (isAllowed = false) => ({
 	},
 });
 
-export const main = middyfy(basicAuthorizer);
+export const main = basicAuthorizer;
